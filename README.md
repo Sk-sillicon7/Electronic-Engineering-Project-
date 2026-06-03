@@ -1,3 +1,4 @@
+
 # 🛠️ ESP32 16x2 I2C Smart Display Firmware & Docs
 
 This repository contains the working firmware code, hardware wiring matrix, and step-by-step setup instructions to stream text from the Arduino Serial Monitor onto a 16x2 LCD screen using an ESP32 and an I2C backpack interface.
@@ -42,3 +43,4 @@ This project is an example of my approach to clean hardware documentation and fu
 
 📬 *Looking for custom circuit design, component sourcing, or product documentation?*  
 Let's talk business: *[Hire Me on Upwork](https://www.upwork.com)*
+Link : https://www.upwork.com/freelancers/~0147947d9c4070f5a5?mp_source=share
