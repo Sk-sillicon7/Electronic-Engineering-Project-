@@ -41,6 +41,5 @@ This repository contains the working firmware code, hardware wiring matrix, and 
 ## 💼 Technical Services & Professional Engineering
 This project is an example of my approach to clean hardware documentation and functional prototyping. I specialize in system integration, Bill of Materials (BOM) cost reduction, and embedded electronics troubleshooting.
 
-📬 *Looking for custom circuit design, component sourcing, or product documentation?*  
-Let's talk business: *[Hire Me on Upwork](https://www.upwork.com)*
-Link : https://www.upwork.com/freelancers/~0147947d9c4070f5a5?mp_source=share
+📬*Looking for custom circuit design, component sourcing, or product documentation?*  
+Let's talk business: **[Hire Me on Upwork](https://www.upwork.com/freelancers/~0147947d9c4070f5a5?mp_source=share)**
