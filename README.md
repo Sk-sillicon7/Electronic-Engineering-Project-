@@ -1,65 +1,44 @@
-# ESP32 I2C Smart Display
+# 🛠️ ESP32 16x2 I2C Smart Display Firmware & Docs
 
-Part of the [Electronics Engineering Projects Portfolio](../README.md) by **Shafia Khan**.
-
-A lightweight ESP32 firmware project that displays Serial Monitor input on a 16×2 I2C LCD. See the root portfolio README for the full project list.
+This repository contains the working firmware code, hardware wiring matrix, and step-by-step setup instructions to stream text from the Arduino Serial Monitor onto a 16x2 LCD screen using an ESP32 and an I2C backpack interface.
 
 ---
 
-## Project Overview
-
-The ESP32 acts as a serial-to-display bridge: text sent from the Arduino Serial Monitor is parsed, sanitized, and rendered on an HD44780-compatible LCD with a PCF8574 I2C backpack. Each new line clears the screen before updating both rows (up to 32 characters).
-
----
-
-## Key Features
-
-- I2C LCD on GPIO 21 (SDA) and GPIO 22 (SCL)
-- Welcome screen on boot (`ESP32 Ready` / `Serial->LCD`)
-- Live Serial input at 115200 baud
-- Automatic LCD clear on each new message
-- Two-row layout with input sanitization and serial echo
+## 📌 How It Works (Technical Overview)
+* *No Complex Protocol Overhead:* Direct implementation using standard Wire.h I2C communication on default ESP32 pins.
+* *Boot Sequence Check:* The display triggers a quick splash screen message (ESP32 Ready -> Serial->LCD) on startup so you know the hardware initialized properly before data streaming begins.
+* *Smart Row Buffering:* Automatically handles and cleans incoming serial character arrays, splits strings across the 16x2 grid (up to 32 characters total), and triggers a screen clear command right before new data hits the display to prevent overlapping text bugs.
 
 ---
 
-## Hardware Components
+## 🔌 Hardware Setup & Connections
 
-| Component | Notes |
-|-----------|--------|
-| ESP32 development board | USB programming and power |
-| 16×2 LCD + I2C backpack | Typical address `0x27` or `0x3F` |
-| Jumper wires | SDA, SCL, VCC, GND |
+### 📦 Component Breakdown
+* *Microcontroller:* ESP32 Development Board (NodeMCU / DoIT 30-pin variant).
+* *Display Module:* Standard 16x2 Alphanumeric LCD with a pre-soldered PCF8574 I2C adapter board.
+* *Default Hex Addresses:* Usually pre-configured to 0x27 or 0x3F depending on the backpack manufacturer.
 
----
-
-## Pin Mapping
-
-| Signal | ESP32 GPIO |
-|--------|------------|
-| **SDA** | **21** |
-| **SCL** | **22** |
-| VCC | 3.3 V or 5 V (per module) |
-| GND | GND |
+### 🧵 Pin Mapping Table
+| From LCD (I2C Backpack) | To ESP32 Development Board | Power & Signal Notes |
+| :--- | :--- | :--- |
+| *VCC* | 5V / VIN (or 3.3V) | Check module datasheet for backlight voltage |
+| *GND* | GND | Common ground loop |
+| *SDA* | GPIO 21 | Dedicated Hardware I2C Serial Data line |
+| *SCL* | GPIO 22 | Dedicated Hardware I2C Serial Clock line |
 
 ---
 
-## Software Requirements
+## 🚀 Step-by-Step Deployment Guide
 
-- Arduino IDE with **esp32** board support (Espressif)
-- Library: **LiquidCrystal I2C** (Frank de Brabander)
-
----
-
-## Setup Instructions
-
-1. Wire SDA → GPIO 21, SCL → GPIO 22, power and ground.
-2. Install ESP32 core and LiquidCrystal I2C library.
-3. Open `ESP32_LCD_Serial.ino`, select your ESP32 board, and upload.
-4. Serial Monitor: **115200** baud, line ending **Newline** or **Both NL & CR**.
-5. If the display is blank, set `LCD_I2C_ADDRESS` to `0x3F` in the sketch.
+1. *Environment Config:* Open your *Arduino IDE* and make sure you have the official esp32 board manager package installed (by Espressif).
+2. *Library Dependency:* Go to Tools -> Manage Libraries and install the standard LiquidCrystal_I2C library by Frank de Brabander.
+3. *Flashing the Chip:* Open the ESP32_LCD_Serial.ino sketch file from this repo, plug in your board via micro-USB, select the right COM port, and hit Upload.
+4. *Testing Data Streams:* Once flashed, open up your Serial Monitor, change the baud rate setting to 115200, and set the line ending dropdown menu to Both NL & CR. Type any text in the input bar, hit enter, and watch it render live on the LCD hardware.
 
 ---
 
-## Author
+## 💼 Technical Services & Professional Engineering
+This project is an example of my approach to clean hardware documentation and functional prototyping. I specialize in system integration, Bill of Materials (BOM) cost reduction, and embedded electronics troubleshooting.
 
-**Shafia Khan** — [Portfolio](../README.md)
+📬 *Looking for custom circuit design, component sourcing, or product documentation?*  
+Let's talk business: *[Hire Me on Upwork](https://www.upwork.com)*
